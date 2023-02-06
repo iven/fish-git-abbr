@@ -1,4 +1,5 @@
 # fish-git-abbr
+
 Abbreviations for `git` for the [fish shell](https://fishshell.com/) :fish:.
 
 Mainly based off those of [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet#git).
@@ -23,6 +24,11 @@ abbreviation | result
 `gapa` | `git add --patch`
 `gau` | `git add --update`
 `gav` | `git add --verbose`
+`gam` | `git am`
+`gamc` | `git am --continue`
+`gams` | `git am --skip`
+`gama` | `git am --abort`
+`gamscp` | `git am --show-current-patch`
 `gap` | `git apply`
 `gapt` | `git apply --3way`
 `gb` | `git branch`
@@ -40,9 +46,8 @@ abbreviation | result
 `gbsr` | `git bisect reset`
 `gbss` | `git bisect start`
 `gc` | `git commit -v`
-`gci` | `git commit -v --allow-empty -m'chore: initial commit'
+`gci` | `git commit -v --allow-empty -m 'chore: initial commit'
 `gc!` | `git commit -v --amend`
-`gcn` | `git commit -v --no-edit`
 `gcn!` | `git commit -v --amend --no-edit`
 `gca` | `git commit -a -v`
 `gca!` | `git commit -a -v --amend`
@@ -54,7 +59,8 @@ abbreviation | result
 `gcsm` | `git commit -s -m`
 `gcm` | `git commit -m`
 `gcs` | `git commit -S`
-`gcf` | `git config --list`
+`gcf` | `git config`
+`gcfl` | `git config --list`
 `gcl` | `git clone --recurse-submodules`
 `gclean` | `git clean -id`
 `gco` | `git checkout`
@@ -66,27 +72,34 @@ abbreviation | result
 `gcor` | `git checkout release/`
 `gcos` | `git checkout support/`
 `gcors` | `git checkout --recurse-submodules`
-`gcount` | `git shortlog -sn`
 `gcp` | `git cherry-pick`
 `gcpa` | `git cherry-pick --abort`
 `gcpc` | `git cherry-pick --continue`
 `gd` | `git diff`
 `gdca` | `git diff --cached`
 `gdcw` | `git diff --cached --word-diff`
-`gdct` | `git diff --staged`
+`gds` | `git diff --staged`
 `gdt` | `git diff-tree --no-commit-id --name-only -r`
 `gdup` | `git diff @{upstream}`
+`gdw` | `git diff --word-diff`
 `gdct` | `git describe --tags (git rev-list --tags --max-count=1)`
 `gf` | `git fetch`
 `gfa` | `git fetch --all --prune`
 `gfo` | `git fetch origin`
-`ghh` | `git help`
+`ggp` | `git push origin (git_current_branch)`
+`ggpf` | `git push --force-with-lease origin (git_current_branch)`
+`ggpf!` | `git push --force origin (git_current_branch)`
+`ggpl` | `git pull origin (git_current_branch)`
+`ggrs` | `git reset origin/(git_current_branch)`
+`ggrs!` | `git reset origin/(git_current_branch) --hard`
+`gh` | `git help`
 `gi` | `git init`
 `gignore` | `git update-index --assume-unchanged`
+`gunignore` | `git update-index --no-assume-unchanged`
+`gfg` | `git ls-files | grep`
 `gignored` | `git ls-files -v | grep "^[[:lower:]]"`
 `gk` | `gitk --all --branches &!`
 `gke` | `gitk --all (git log -g --pretty=%h) &!`
-`gfg` | `git ls-files | grep`
 `gl` | `git log`
 `gls` | `git log --stat`
 `glsp` | `git log --stat -p`
@@ -110,19 +123,19 @@ abbreviation | result
 `gptf` | `git push --tags --force-with-lease`
 `gptf!` | `git push --tags --force`
 `gpoat` | `git push origin --all && git push origin --tags`
-`gpoatf!` | `git push origin --all --force-with-lease && git push origin --tags --force-with-lease`
+`gpoatf` | `git push origin --all --force-with-lease && git push origin --tags --force-with-lease`
 `gpoatf!` | `git push origin --all --force && git push origin --tags --force`
 `gpv` | `git push -v`
 `gpl` | `git pull`
 `gplo` | `git pull origin`
-`gplom` | `git pull origin master`
+`gplom` | `git pull origin (git_main_branch)`
 `gplu` | `git pull upstream`
-`gplum` | `git pull upstream master`
+`gplum` | `git pull upstream (git_main_branch)`
 `gr` | `git remote -v`
 `gra` | `git remote add`
 `grau` | `git remote add upstream`
-`grrm` | `git remote remove`
 `grmv` | `git remote rename`
+`grrm` | `git remote remove`
 `grset` | `git remote set-url`
 `gru` | `git remote update`
 `grv` | `git remote -v`
@@ -132,16 +145,15 @@ abbreviation | result
 `grbc` | `git rebase --continue`
 `grbd` | `git rebase (git_develop_branch)`
 `grbi` | `git rebase -i`
+`grbiom` | `git rebase -i origin/(git_main_branch)`
 `grbom` | `git rebase origin/(git_main_branch)`
 `grbo` | `git rebase --onto`
 `grbs` | `git rebase --skip`
 `grev` | `git revert`
 `grs` | `git reset`
 `grs!` | `git reset --hard`
-`grsh` | `git reset HEAD`
-`grsh!` | `git reset HEAD --hard`
-`grsoh` | `git reset origin/(git_current_branch)`
-`grsoh!` | `git reset origin/(git_current_branch) --hard`
+`grsom` | `git reset origin/(git_main_branch)`
+`grsom!` | `git reset origin/(git_main_branch) --hard`
 `gpristine` | `git reset --hard && git clean -dffx`
 `grs-` | `git reset --`
 `grm` | `git rm`
@@ -149,22 +161,24 @@ abbreviation | result
 `grst` | `git restore`
 `grsts` | `git restore --source`
 `grstst` | `git restore --staged`
-`grt` | `cd "(git rev-parse --show-toplevel || echo .)"`
+`grt` | `cd (git rev-parse --show-toplevel)`
 `gs` | `git status`
 `gss` | `git status -s`
 `gsb` | `git status -sb`
-`gshow` | `git show`
-`gshowps` | `git show --pretty=short --show-signature`
+`gsh` | `git show`
+`gshps` | `git show --pretty=short --show-signature`
+`gsmi` | `git submodule init`
+`gsmu` | `git submodule update`
 `gst` | `git stash`
 `gsta` | `git stash apply`
 `gstc` | `git stash clear`
 `gstd` | `git stash drop`
 `gstl` | `git stash list`
 `gstp` | `git stash pop`
-`gstshow` | `git stash show --text`
+`gstsh` | `git stash show --text`
 `gstall` | `git stash --all`
 `gsts` | `git stash save`
-`gsu` | `git submodule update`
+`gstat` | `git shortlog -sn`
 `gsw` | `git switch`
 `gswc` | `git switch -c`
 `gswm` | `git switch (git_main_branch)`
@@ -173,17 +187,13 @@ abbreviation | result
 `gts` | `git tag -s`
 `gta` | `git tag -a`
 `gtas` | `git tag -a -s`
+`gtv` | `git tag | sort -V`
 `gwch` | `git whatchanged -p --abbrev-commit --pretty=medium`
 `gwt` | `git worktree`
 `gwta` | `git worktree add`
-`gwtls` | `git worktree list`
+`gwtl` | `git worktree list`
 `gwtmv` | `git worktree move`
 `gwtrm` | `git worktree remove`
-`gam` | `git am`
-`gamc` | `git am --continue`
-`gams` | `git am --skip`
-`gama` | `git am --abort`
-`gamscp` | `git am --show-current-patch`
 
 ## See Also
 
