@@ -107,14 +107,6 @@ abbr gf 'git fetch'
 abbr gfa 'git fetch --all --prune'
 abbr gfo 'git fetch origin'
 
-# gg: current branch related abbreviations
-abbr ggp 'git push origin (git_current_branch)'
-abbr ggpf 'git push --force-with-lease origin (git_current_branch)'
-abbr ggpf! 'git push --force origin (git_current_branch)'
-abbr ggpl 'git pull origin (git_current_branch)'
-abbr ggrs 'git reset origin/(git_current_branch)'
-abbr ggrs! 'git reset origin/(git_current_branch) --hard'
-
 # gg
 # gga
 # ggpnp
@@ -281,6 +273,16 @@ abbr gwtl 'git worktree list'
 abbr gwtmv 'git worktree move'
 abbr gwtrm 'git worktree remove'
 
+# Shortcuts
+abbr ggp 'git push origin (git_current_branch)'
+abbr ggpf 'git push --force-with-lease origin (git_current_branch)'
+abbr ggpf! 'git push --force origin (git_current_branch)'
+abbr ggpl 'git pull origin (git_current_branch)'
+abbr ggl 'git pull origin --rebase (git_main_branch)'
+abbr ggla 'git pull origin --rebase --autostash (git_main_branch)'
+abbr gglav 'git pull origin --rebase --autostash --verbose (git_main_branch)'
+abbr ggr 'git reset origin/(git_main_branch) --hard'
+
 function git_abbr_uninstall --on-event git_abbr_uninstall
 
   set -e __git_abbr_version
@@ -358,12 +360,6 @@ function git_abbr_uninstall --on-event git_abbr_uninstall
   abbr -e gf
   abbr -e gfa
   abbr -e gfo
-  abbr -e ggp
-  abbr -e ggpf
-  abbr -e ggpf!
-  abbr -e ggpl
-  abbr -e ggrs
-  abbr -e ggrs!
   abbr -e gh
   abbr -e gi
   abbr -e gignore
@@ -466,4 +462,12 @@ function git_abbr_uninstall --on-event git_abbr_uninstall
   abbr -e gwtl
   abbr -e gwtmv
   abbr -e gwtrm
+  abbr -e ggp
+  abbr -e ggpf
+  abbr -e ggpf!
+  abbr -e ggpl
+  abbr -e ggl
+  abbr -e ggla
+  abbr -e gglv
+  abbr -e ggr
 end

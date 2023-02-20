@@ -86,12 +86,6 @@ abbreviation | result
 `gf` | `git fetch`
 `gfa` | `git fetch --all --prune`
 `gfo` | `git fetch origin`
-`ggp` | `git push origin (git_current_branch)`
-`ggpf` | `git push --force-with-lease origin (git_current_branch)`
-`ggpf!` | `git push --force origin (git_current_branch)`
-`ggpl` | `git pull origin (git_current_branch)`
-`ggrs` | `git reset origin/(git_current_branch)`
-`ggrs!` | `git reset origin/(git_current_branch) --hard`
 `gh` | `git help`
 `gi` | `git init`
 `gignore` | `git update-index --assume-unchanged`
@@ -194,6 +188,14 @@ abbreviation | result
 `gwtl` | `git worktree list`
 `gwtmv` | `git worktree move`
 `gwtrm` | `git worktree remove`
+`ggp` | `git push origin (git_current_branch)`
+`ggpf` | `git push --force-with-lease origin (git_current_branch)`
+`ggpf!` | `git push --force origin (git_current_branch)`
+`ggpl` | `git pull origin (git_current_branch)`
+`ggl` | `git pull origin --rebase (git_main_branch)`
+`ggla` | `git pull origin --rebase --autostash (git_main_branch)`
+`gglav` | `git pull origin --rebase --autostash --verbose (git_main_branch)`
+`ggr` | `git reset origin/(git_main_branch) --hard`
 
 ## See Also
 
